@@ -1,0 +1,36 @@
+﻿@using MvcKutuphane2.Models.Entity
+<!--Diyerek içindeki alanlara ulaşabiliriz -->
+@model List<TBLPERSONEL>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Personeller</h2>
+<!-- -->
+<table class="table table-bordered">
+    <!-- kenarlıklı table -->
+    <tr>
+        <!-- tr diyerek satır oluşturuldu -->
+        <th>Personel ID</th>
+        <th>Personel ADI</th>
+        <th>SİL</th> <!-- Başlıkta SİL sütünü oluştu-->
+        <th>GÜNCELLE</th>
+    </tr>
+    @foreach (var prs in Model)
+    {
+
+        <tr>
+            <!-- th kalın punto td ince ; yeni td yeni kutu ; yeni tr yeni satır-->
+            <td>@prs.ID</td><!--krg den gelen ID -->
+            <td>@prs.PERSONEL</td><!--krg den gelen AD ktg yerine roman yazınca 12 kere roman yazdı -->
+            <td><a href="/Personel/PersonelSil/@prs.ID" class="btn btn-danger">Sil</a></td><!--Kategorisil ActionResult a git ktg.ID yi sil -->
+            <td><a href="/Personel/PersonelGetir/@prs.ID" class="btn btn-success">Güncelle</a></td>
+        </tr>
+    }
+
+</table>
+<a href="/Personel/PersonelEkle/" class="btn btn-primary">Yeni Personel Ekle</a>
+
+
+
